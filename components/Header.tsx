@@ -1,6 +1,10 @@
 import React from 'react';
 
-const Header = ({ children }) => {
+interface Props {
+  children: React.ReactNode;
+}
+
+const Header = ({ children }: Props) => {
   return <header>{children}</header>;
 };
 
