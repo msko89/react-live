@@ -1,4 +1,3 @@
-import type { NextPage } from 'next';
 import { useState } from 'react';
 import styled from 'styled-components';
 
@@ -8,9 +7,9 @@ import { headerCodeEditor } from '../components/Header';
 import { footerCodeEditor } from '../components/Footer';
 import LiveEdit from '../components/LiveEdit';
 
-const Home: NextPage = () => {
+const Home = () => {
   const [codeComponent, setCodeComponent] = useState(buttonCodeEditor);
-  const [selectedComponent, setSelectedComponent] = useState<string>('button');
+  const [selectedComponent, setSelectedComponent] = useState('button');
 
   const handleClick = (event, key) => {
     setSelectedComponent(key);
@@ -76,7 +75,7 @@ const Components = styled.div`
   padding: 20px;
 `;
 
-const Component = styled.button<{ isSelected: boolean }>`
+const Component = styled.button`
   display: flex;
   border: none;
   background-color: #fff;
