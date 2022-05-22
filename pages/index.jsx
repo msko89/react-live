@@ -6,6 +6,7 @@ import { buttonCodeEditor } from '../components/Button';
 import { headerCodeEditor } from '../components/Header';
 import { footerCodeEditor } from '../components/Footer';
 import LiveEdit from '../components/LiveEdit';
+import ApiSpecification from '../codeEditor/ApiSpecification';
 
 const Home = () => {
   const [codeComponent, setCodeComponent] = useState(buttonCodeEditor);
@@ -42,14 +43,18 @@ const Home = () => {
       </Components>
       <CodeEditor>
         {COMPONENTS.map(
-          ({ key }) =>
+          ({ key, documents }) =>
             selectedComponent === key && (
-              <LiveEdit
-                key={key}
-                code={codeComponent.code}
-                scope={codeComponent.scope}
-                noInline={codeComponent.noInline || false}
-              />
+              <section key={key}>
+                <LiveEdit
+                  code={codeComponent.code}
+                  scope={codeComponent.scope}
+                  noInline={codeComponent.noInline || false}
+                />
+                {documents?.length && (
+                  <ApiSpecification documents={documents} />
+                )}
+              </section>
             )
         )}
       </CodeEditor>

@@ -17,6 +17,7 @@ const LiveWrapper = styled.div`
   flex-direction: row;
   justify-content: stretch;
   align-items: stretch;
+  margin-bottom: 200px;
 
   @media (max-width: 600px) {
     flex-direction: column;

@@ -7,21 +7,19 @@ interface Props {
   disabled?: boolean;
   width?: string;
   height?: string;
+  color?: string;
+  backgroundColor?: string;
   children: React.ReactNode;
 }
 
-const Button = ({ width, height, children, ...props }: Props) => {
-  return (
-    <ButtonStyle width={width} height={height} {...props}>
-      {children}
-    </ButtonStyle>
-  );
+const Button = ({ children, ...props }: Props) => {
+  return <ButtonStyle {...props}>{children}</ButtonStyle>;
 };
 
 export default Button;
 
 const buttonCodeEditor = {
-  code: `<Button>버튼</Button>`,
+  code: `<Button width={100} height={100}>버튼</Button>`,
   scope: { Button },
 };
 
@@ -34,6 +32,10 @@ const ButtonStyle = styled.button<Partial<Props>>`
   font-weight: bold;
   letter-spacing: -0.04em;
   border-radius: 8px;
-  width: ${({ width }) => width && `${width}px`};
-  height: ${({ height }) => height && `${height}px`};
+
+  width: ${({ width }) => (width ? `${width}px` : '100px')};
+  height: ${({ height }) => (height ? `${height}px` : '100px')};
+  color: ${({ color }) => (color ? color : '#000')};
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ? backgroundColor : '#fff'};
 `;
